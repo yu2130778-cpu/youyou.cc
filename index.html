@@ -27,7 +27,7 @@
       background-color: #182b7d;
     }
 
-    /* 背景 */
+    /* 电脑端背景：原背景图 */
     body::before {
       content: "";
       position: fixed;
@@ -53,7 +53,6 @@
       pointer-events: none;
     }
 
-    /* 漂浮星点 */
     .stars {
       position: fixed;
       inset: 0;
@@ -93,7 +92,7 @@
       position: relative;
       padding: 8px 10px 30px;
       z-index: 5;
-      animation: pageFadeIn .7s ease both;
+      animation: pageFadeIn .5s ease both;
     }
 
     .orb {
@@ -271,7 +270,7 @@
         0 20px 44px rgba(6, 20, 84, 0.34),
         0 0 0 1px rgba(255,255,255,0.06),
         inset 0 1px 0 rgba(255,255,255,0.12);
-    }
+      }
 
     .primary-link {
       box-shadow:
@@ -360,7 +359,6 @@
       display: none;
     }
 
-    /* 去黑框：移除了 backdrop-filter */
     .modal-mask {
       display: none;
       position: fixed;
@@ -545,7 +543,7 @@
       transform: translateX(-50%) translateY(-6px);
     }
 
-    /* 手机端背景修复：改成 contain，尽量完整显示 */
+    /* 手机端独立背景 */
     @media (max-width: 768px) {
       body {
         padding: 18px 14px calc(34px + env(safe-area-inset-bottom));
@@ -553,8 +551,8 @@
 
       body::before {
         background:
-          linear-gradient(180deg, rgba(17, 33, 102, 0.34) 0%, rgba(21, 47, 140, 0.24) 45%, rgba(12, 24, 88, 0.48) 100%),
-          url("./background.png") center center / contain no-repeat;
+          linear-gradient(180deg, rgba(17, 33, 102, 0.24) 0%, rgba(21, 47, 140, 0.16) 45%, rgba(12, 24, 88, 0.34) 100%),
+          url("./background-mobile.png") center center / cover no-repeat;
         background-color: #182b7d;
       }
 
@@ -654,31 +652,14 @@
     }
 
     @keyframes avatarGlow {
-      0% {
-        opacity: 0.75;
-        transform: scale(0.98);
-      }
-      50% {
-        opacity: 1;
-        transform: scale(1.03);
-      }
-      100% {
-        opacity: 0.75;
-        transform: scale(0.98);
-      }
+      0% { opacity: 0.75; transform: scale(0.98); }
+      50% { opacity: 1; transform: scale(1.03); }
+      100% { opacity: 0.75; transform: scale(0.98); }
     }
 
     @keyframes pageFadeIn {
-      0% {
-        opacity: 0;
-        transform: translateY(12px);
-        filter: blur(6px);
-      }
-      100% {
-        opacity: 1;
-        transform: translateY(0);
-        filter: blur(0);
-      }
+      0% { opacity: 0; }
+      100% { opacity: 1; }
     }
 
     @keyframes primaryPulse {
@@ -703,18 +684,9 @@
     }
 
     @keyframes starFloat {
-      0% {
-        transform: translateY(0px) scale(1);
-        opacity: 0.35;
-      }
-      50% {
-        transform: translateY(-10px) scale(1.15);
-        opacity: 0.95;
-      }
-      100% {
-        transform: translateY(0px) scale(1);
-        opacity: 0.35;
-      }
+      0% { transform: translateY(0px) scale(1); opacity: 0.35; }
+      50% { transform: translateY(-10px) scale(1.15); opacity: 0.95; }
+      100% { transform: translateY(0px) scale(1); opacity: 0.35; }
     }
 
     @keyframes fadeMask {
@@ -723,14 +695,8 @@
     }
 
     @keyframes modalPop {
-      0% {
-        opacity: 0;
-        transform: translateY(10px) scale(0.98);
-      }
-      100% {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-      }
+      0% { opacity: 0; transform: translateY(10px) scale(0.98); }
+      100% { opacity: 1; transform: translateY(0) scale(1); }
     }
   </style>
 </head>
@@ -785,44 +751,44 @@
     </a>
 
     <div class="hint"></div>
-
-    <div id="passwordModal" class="modal-mask">
-      <div class="modal-card">
-        <div class="modal-title">主入口验证</div>
-        <div class="modal-desc">请输入访问密码后进入主站</div>
-        <input id="passwordInput" class="modal-input" type="password" inputmode="numeric" placeholder="请输入密码" />
-        <div id="passwordError" class="error-text">密码错误，请重试。</div>
-        <div class="btn-row">
-          <button class="btn-sub" onclick="closePasswordModal()">取消</button>
-          <button class="btn-main" onclick="submitPassword()">进入</button>
-        </div>
-      </div>
-    </div>
-
-    <div id="agentModal" class="modal-mask">
-      <div class="modal-card">
-        <div class="modal-title">添加代理客服</div>
-        <div class="modal-desc">
-          如果没有自动打开 QQ，请复制下面的 QQ 号后，打开 QQ 手动搜索添加。
-        </div>
-
-        <div class="agent-qq-box">2604322965</div>
-
-        <div id="copyTip" class="success-text">已复制 QQ 号</div>
-
-        <div class="btn-row">
-          <button class="btn-main" onclick="copyAgentQQ()">复制 QQ</button>
-          <button class="btn-sub" onclick="tryOpenQQ()">打开 QQ</button>
-        </div>
-
-        <div class="btn-row" style="margin-top:10px;">
-          <button class="btn-ghost" onclick="closeAgentModal()">关闭</button>
-        </div>
-      </div>
-    </div>
-
-    <div id="copyToast" class="copy-toast">已复制</div>
   </main>
+
+  <div id="passwordModal" class="modal-mask">
+    <div class="modal-card">
+      <div class="modal-title">主入口验证</div>
+      <div class="modal-desc">请输入访问密码后进入主站</div>
+      <input id="passwordInput" class="modal-input" type="password" inputmode="numeric" placeholder="请输入密码" />
+      <div id="passwordError" class="error-text">密码错误，请重试。</div>
+      <div class="btn-row">
+        <button class="btn-sub" onclick="closePasswordModal()">取消</button>
+        <button class="btn-main" onclick="submitPassword()">进入</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="agentModal" class="modal-mask">
+    <div class="modal-card">
+      <div class="modal-title">添加代理客服</div>
+      <div class="modal-desc">
+        如果没有自动打开 QQ，请复制下面的 QQ 号后，打开 QQ 手动搜索添加。
+      </div>
+
+      <div class="agent-qq-box">2604322965</div>
+
+      <div id="copyTip" class="success-text">已复制 QQ 号</div>
+
+      <div class="btn-row">
+        <button class="btn-main" onclick="copyAgentQQ()">复制 QQ</button>
+        <button class="btn-sub" onclick="tryOpenQQ()">打开 QQ</button>
+      </div>
+
+      <div class="btn-row" style="margin-top:10px;">
+        <button class="btn-ghost" onclick="closeAgentModal()">关闭</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="copyToast" class="copy-toast">已复制</div>
 
   <script>
     function openPasswordPrompt(event) {
