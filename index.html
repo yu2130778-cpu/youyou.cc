@@ -6,6 +6,7 @@
   <title>TG低价批发</title>
   <style>
     * { box-sizing: border-box; }
+
     body {
       margin: 0;
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "PingFang SC", "Microsoft YaHei", sans-serif;
@@ -29,8 +30,6 @@
       padding: 8px 10px 24px;
     }
 
-    
-
     .avatar {
       width: 118px;
       height: 118px;
@@ -38,8 +37,10 @@
       object-fit: cover;
       margin-top: 52px;
       border: 4px solid rgba(255,255,255,0.34);
-      box-shadow: 0 16px 40px rgba(0,0,0,0.22);
+      box-shadow: 0 16px 40px rgba(0,0,0,0.22), 0 0 26px rgba(255,255,255,0.18);
       background: rgba(255,255,255,0.12);
+      position: relative;
+      z-index: 2;
     }
 
     h1 {
@@ -48,33 +49,21 @@
       line-height: 1.1;
       font-weight: 900;
       letter-spacing: 0.6px;
-      text-shadow: 0 8px 24px rgba(0,0,0,0.14);
+      text-shadow: 0 8px 24px rgba(0,0,0,0.18);
+      position: relative;
+      z-index: 2;
     }
 
     .subtitle {
       font-size: 17px;
       line-height: 1.7;
-      color: rgba(255,255,255,0.96);
-      margin: 0 auto 18px;
+      color: rgba(255,255,255,0.98);
+      margin: 0 auto 22px;
       max-width: 360px;
       font-weight: 700;
-      text-shadow: 0 4px 14px rgba(0,0,0,0.1);
-    }
-
-    .mini-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 12px 22px;
-      background: rgba(255,255,255,0.16);
-      border: 1px solid rgba(255,255,255,0.28);
-      border-radius: 999px;
-      color: #fff;
-      text-decoration: none;
-      font-weight: 800;
-      margin-bottom: 30px;
-      backdrop-filter: blur(8px);
-      box-shadow: 0 10px 24px rgba(0,0,0,0.12);
+      text-shadow: 0 4px 14px rgba(0,0,0,0.16);
+      position: relative;
+      z-index: 2;
     }
 
     .buttons {
@@ -82,6 +71,8 @@
       flex-direction: column;
       gap: 18px;
       margin-top: 8px;
+      position: relative;
+      z-index: 2;
     }
 
     .card-link {
@@ -92,19 +83,19 @@
       padding: 18px 22px;
       min-height: 86px;
       border-radius: 999px;
-      border: 2px solid rgba(255,255,255,0.82);
-      background: linear-gradient(180deg, rgba(255,255,255,0.09) 0%, rgba(255,255,255,0.05) 100%);
+      border: 2px solid rgba(255,255,255,0.88);
+      background: linear-gradient(180deg, rgba(255,255,255,0.14) 0%, rgba(255,255,255,0.07) 100%);
       text-decoration: none;
       color: #fff;
-      box-shadow: 0 14px 34px rgba(6, 28, 110, 0.22);
-      backdrop-filter: blur(6px);
+      box-shadow: 0 16px 38px rgba(6, 20, 84, 0.30);
+      backdrop-filter: blur(10px);
       transition: transform .18s ease, background .18s ease, box-shadow .18s ease;
     }
 
     .card-link:hover {
       transform: translateY(-3px);
-      background: linear-gradient(180deg, rgba(255,255,255,0.14) 0%, rgba(255,255,255,0.08) 100%);
-      box-shadow: 0 18px 40px rgba(6, 28, 110, 0.28);
+      background: linear-gradient(180deg, rgba(255,255,255,0.18) 0%, rgba(255,255,255,0.10) 100%);
+      box-shadow: 0 18px 42px rgba(6, 20, 84, 0.34);
     }
 
     .left-icon, .right-icon {
@@ -147,9 +138,17 @@
       color: #1f2d4c;
       text-decoration: none;
       font-weight: 900;
-      box-shadow: 0 0 0 1px rgba(255,255,255,0.18), 0 14px 30px rgba(0,0,0,0.16), 0 0 26px rgba(255,255,255,0.28);
+      box-shadow:
+        0 0 0 1px rgba(255,255,255,0.18),
+        0 14px 30px rgba(0,0,0,0.16),
+        0 0 26px rgba(255,255,255,0.28);
       position: relative;
       overflow: hidden;
+      z-index: 2;
+    }
+
+    .footer-badge:hover {
+      transform: translateY(-2px);
     }
 
     .hint {
@@ -164,9 +163,6 @@
       .card-text small { font-size: 12px; }
       .left-icon, .right-icon { width: 34px; height: 34px; }
     }
-      .card-link { min-height: 76px; padding: 16px 16px; }
-      .card-text { font-size: 14px; }
-    }
   </style>
 </head>
 <body>
@@ -176,21 +172,19 @@
     <div style="position:absolute; inset:auto 30px 120px auto; width:180px; height:180px; background:rgba(208,220,255,0.12); filter:blur(52px); border-radius:50%; pointer-events:none;"></div>
     <div style="position:absolute; inset:220px auto auto 40px; width:120px; height:120px; border:1px solid rgba(255,255,255,0.18); border-radius:50%; filter:blur(1px); pointer-events:none;"></div>
     <div style="position:absolute; inset:520px 50px auto auto; width:88px; height:88px; border:1px solid rgba(255,255,255,0.16); border-radius:50%; pointer-events:none;"></div>
-    <div style="position:absolute; inset:120px -40px auto auto; width:180px; height:180px; background:rgba(255,255,255,0.08); filter:blur(40px); border-radius:50%; pointer-events:none;"></div>
-    <div style="position:absolute; inset:420px auto auto -60px; width:200px; height:200px; background:rgba(255,255,255,0.06); filter:blur(48px); border-radius:50%; pointer-events:none;"></div>
-    
 
     <img class="avatar" src="./avatar.jpg" alt="头像" />
 
     <h1>TG低价批发</h1>
+
     <p class="subtitle">
       TG客服@Yep082<br />
       自助下单前请先看商品说明<br />
-      防失联Q: 2604322965<br />
+      防失联Q：2604322965<br />
       备用Q：2691399844
     </p>
 
-    <section class="buttons" style="position:relative; z-index:1;">
+    <section class="buttons">
       <a class="card-link" href="#" onclick="openPasswordPrompt(event)">
         <span class="left-icon">☞</span>
         <div class="card-text">
@@ -200,7 +194,7 @@
         <span class="right-icon">🔒</span>
       </a>
 
-      <a class="card-link" href="#" target="_blank" rel="noopener noreferrer">
+      <a class="card-link" href="https://www.google.com/chrome/dr/download/" target="_blank" rel="noopener noreferrer">
         <span class="left-icon">☞</span>
         <div class="card-text">
           谷歌下载
@@ -229,7 +223,8 @@
       </div>
     </div>
   </main>
-    <script>
+
+  <script>
     function openPasswordPrompt(event) {
       event.preventDefault();
       document.getElementById('passwordModal').style.display = 'block';
@@ -248,12 +243,9 @@
       const val = input.value.trim();
       if (val === '0801') {
         closePasswordModal();
-        window.open('https://www.689782.xyz', '_blank', 'noopener,noreferrer');
+        window.open('https://www.689782.com', '_blank', 'noopener,noreferrer');
       } else {
         document.getElementById('passwordError').style.display = 'block';
-      }
-    } else {
-        window.alert('密码错误，请重试。');
       }
     }
 
