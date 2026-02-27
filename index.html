@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>个人聚合页</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "PingFang SC", "Microsoft YaHei", sans-serif;
+      min-height: 100vh;
+      background: linear-gradient(180deg, #5db4d6 0%, #2e73c8 45%, #1327b2 100%);
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 24px 16px 40px;
+    }
+
+    .page {
+      width: 100%;
+      max-width: 430px;
+      text-align: center;
+      position: relative;
+    }
+
+    .menu-btn {
+      position: absolute;
+      right: 0;
+      top: 0;
+      width: 48px;
+      height: 48px;
+      border: none;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.28);
+      color: #fff;
+      font-size: 24px;
+      cursor: pointer;
+      backdrop-filter: blur(6px);
+    }
+
+    .avatar {
+      width: 110px;
+      height: 110px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-top: 52px;
+      border: 4px solid rgba(255,255,255,0.25);
+      box-shadow: 0 12px 30px rgba(0,0,0,0.18);
+      background: rgba(255,255,255,0.12);
+    }
+
+    h1 {
+      margin: 18px 0 8px;
+      font-size: 38px;
+      line-height: 1.15;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+    }
+
+    .subtitle {
+      font-size: 16px;
+      line-height: 1.55;
+      color: rgba(255,255,255,0.95);
+      margin: 0 auto 18px;
+      max-width: 340px;
+      font-weight: 600;
+    }
+
+    .mini-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 18px;
+      background: rgba(255,255,255,0.18);
+      border: 1px solid rgba(255,255,255,0.24);
+      border-radius: 999px;
+      color: #fff;
+      text-decoration: none;
+      font-weight: 700;
+      margin-bottom: 28px;
+      backdrop-filter: blur(6px);
+    }
+
+    .buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      margin-top: 8px;
+    }
+
+    .card-link {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      padding: 18px 20px;
+      min-height: 84px;
+      border-radius: 999px;
+      border: 2px solid rgba(255,255,255,0.75);
+      background: rgba(255,255,255,0.06);
+      text-decoration: none;
+      color: #fff;
+      box-shadow: 0 10px 30px rgba(4, 28, 123, 0.18);
+      backdrop-filter: blur(4px);
+      transition: transform .18s ease, background .18s ease;
+    }
+
+    .card-link:hover {
+      transform: translateY(-2px);
+      background: rgba(255,255,255,0.1);
+    }
+
+    .left-icon, .right-icon {
+      flex: 0 0 auto;
+      width: 34px;
+      height: 34px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.14);
+      font-size: 18px;
+    }
+
+    .card-text {
+      flex: 1;
+      text-align: center;
+      font-size: 15px;
+      line-height: 1.45;
+      font-weight: 800;
+    }
+
+    .card-text small {
+      display: block;
+      font-size: 13px;
+      font-weight: 600;
+      opacity: 0.95;
+      margin-top: 4px;
+    }
+
+    .footer-badge {
+      margin: 34px auto 0;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 22px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.88);
+      color: #333;
+      text-decoration: none;
+      font-weight: 800;
+      box-shadow: 0 10px 24px rgba(0,0,0,0.14);
+    }
+
+    .hint {
+      margin-top: 14px;
+      font-size: 12px;
+      color: rgba(255,255,255,0.85);
+      line-height: 1.6;
+    }
+
+    @media (max-width: 480px) {
+      h1 { font-size: 32px; }
+      .card-link { min-height: 76px; padding: 16px 16px; }
+      .card-text { font-size: 14px; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <button class="menu-btn" aria-label="更多">⋯</button>
+
+    <img class="avatar" src="https://placehold.co/220x220/png" alt="头像" />
+
+    <h1>你的名字</h1>
+    <p class="subtitle">
+      这里写一句简介<br />
+      例如：客服 / 下载入口 / 社群导航 / 备用链接
+    </p>
+
+    <a class="mini-link" href="#" target="_blank" rel="noopener noreferrer">
+      yourlink.com ↗
+    </a>
+
+    <section class="buttons">
+      <a class="card-link" href="#" target="_blank" rel="noopener noreferrer">
+        <span class="left-icon">☞</span>
+        <div class="card-text">
+          主入口按钮
+          <small>这里可以写一行补充说明</small>
+        </div>
+        <span class="right-icon">🔒</span>
+      </a>
+
+      <a class="card-link" href="#" target="_blank" rel="noopener noreferrer">
+        <span class="left-icon">☞</span>
+        <div class="card-text">
+          备用入口 / 下载入口
+          <small>可改成 Telegram / WhatsApp / 官网 / 下载</small>
+        </div>
+        <span class="right-icon">⋮</span>
+      </a>
+    </section>
+
+    <a class="footer-badge" href="#" target="_blank" rel="noopener noreferrer">
+      ♥ 底部按钮文案
+    </a>
+
+    <div class="hint">
+      使用方法：替换头像、标题、简介和每个按钮链接即可。<br />
+      部署到 Cloudflare Pages、Vercel、Netlify 或自己的服务器都可以。
+    </div>
+  </main>
+</body>
+</html>
