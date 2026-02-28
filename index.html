@@ -127,28 +127,6 @@
       filter: blur(50px);
     }
 
-    .ring {
-      position: absolute;
-      border-radius: 50%;
-      border: 1px solid rgba(255,255,255,0.16);
-      pointer-events: none;
-      z-index: 0;
-    }
-
-    .ring-1 {
-      width: 116px;
-      height: 116px;
-      left: 20px;
-      top: 220px;
-    }
-
-    .ring-2 {
-      width: 84px;
-      height: 84px;
-      right: 24px;
-      top: 520px;
-    }
-
     .avatar-wrap {
       position: relative;
       display: inline-block;
@@ -674,16 +652,6 @@
         right: 0;
         bottom: 150px;
       }
-
-      .ring-1 {
-        left: 8px;
-        top: 250px;
-      }
-
-      .ring-2 {
-        right: 10px;
-        top: 560px;
-      }
     }
 
     @media (min-width: 1440px) {
@@ -753,8 +721,6 @@
     <div class="orb orb-1"></div>
     <div class="orb orb-2"></div>
     <div class="orb orb-3"></div>
-    <div class="ring ring-1"></div>
-    <div class="ring ring-2"></div>
 
     <div class="avatar-wrap">
       <img class="avatar" src="./avatar.jpg" alt="头像" />
@@ -862,6 +828,7 @@
         document.getElementById('passwordError').style.display = 'block';
       }
     }
+
     function openAgentQQ(event) {
       event.preventDefault();
       const modal = document.getElementById('agentModal');
@@ -954,13 +921,3 @@
   </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
