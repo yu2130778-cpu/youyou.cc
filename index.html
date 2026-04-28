@@ -779,14 +779,14 @@
     <h1>海外账号低价批发</h1>
 
     <p class="subtitle">
-      TG客服 <a href="https://t.me/Yep082" target="_blank" rel="noopener noreferrer">@Yep082</a><br />
+      TG客服 <a href="https://t.me/Yep082" target="_blank">@Yep082</a><br />
       <span style="color:#ff3b30; font-weight:bold;">海外成品号自助下单前请先看商品说明</span><br />
       <span style="color:#ff3b30; font-weight:bold;">主网站公告中有加速器、各类账号登录教程</span><br />
       防失联Q群：<a href="javascript:void(0)" onclick="copyPlainQQ('929873147')">929873147</a><br />
       备用Q：<a href="javascript:void(0)" onclick="copyPlainQQ('2604322965')">2604322965</a>
     </p>
 
-    <a class="site-pill" href="https://978228.xyz" target="_blank" rel="noopener noreferrer">
+    <a class="site-pill" href="https://978228.xyz" target="_blank">
       978228.xyz
       <span class="arrow">↗</span>
     </a>
@@ -796,20 +796,20 @@
         <span class="left-icon">☞</span>
         <div class="card-text">
           主网站入口->密码[0801]
-          <small>输入密码后进入全网最低价海外号批发主站</small>
+          <small>输入密码后进入主站</small>
         </div>
         <span class="right-icon">🔒</span>
       </a>
 
-       <a class="card-link" href="#" onclick="openVPNQQ(event)">
-      <span class="left-icon">☞</span>
-      <div class="card-text">
-        工具获取
-        <small>点击联系客服获取工具</small>
-      </div>
-      <span class="right-icon">VPN</span>
-    </a>
-
+      <!-- ✅ 已改：工具获取 -->
+      <a class="card-link" href="#" onclick="openVPNModal(event)">
+        <span class="left-icon">☞</span>
+        <div class="card-text">
+          工具获取
+          <small>点击联系客服获取工具</small>
+        </div>
+        <span class="right-icon">VPN</span>
+      </a>
 
       <a class="card-link promo-link" href="javascript:void(0)" onclick="copyPromoText()">
         <span class="left-icon">☞</span>
@@ -824,16 +824,14 @@
     <a class="footer-badge" href="#" onclick="openAgentQQ(event)">
       ♥ 成为代理 ♥
     </a>
-
-    <div class="hint"></div>
   </main>
 
+  <!-- 原密码弹窗 -->
   <div id="passwordModal" class="modal-mask">
     <div class="modal-card">
       <div class="modal-title">主网站入口验证</div>
-      <div class="modal-desc">请输入[0801]访问密码后进入主站</div>
-      <input id="passwordInput" class="modal-input" type="password" inputmode="numeric" placeholder="请输入密码" />
-      <div id="passwordError" class="error-text">密码错误，请重试。</div>
+      <input id="passwordInput" class="modal-input" type="password" placeholder="请输入密码" />
+      <div id="passwordError" class="error-text">密码错误</div>
       <div class="btn-row">
         <button class="btn-sub" onclick="closePasswordModal()">取消</button>
         <button class="btn-main" onclick="submitPassword()">进入</button>
@@ -841,164 +839,76 @@
     </div>
   </div>
 
+  <!-- 原代理弹窗 -->
   <div id="agentModal" class="modal-mask">
     <div class="modal-card">
       <div class="modal-title">添加代理客服</div>
-      <div class="modal-desc">
-        如果没有自动打开 QQ，请复制下面的 QQ 号后，打开 QQ 手动搜索添加。
-      </div>
-
       <div class="agent-qq-box">2604322965</div>
-
-      <div id="copyTip" class="success-text">已复制 QQ 号</div>
-
+      <div id="copyTip" class="success-text">已复制</div>
       <div class="btn-row">
         <button class="btn-main" onclick="copyAgentQQ()">复制 QQ</button>
         <button class="btn-sub" onclick="tryOpenQQ()">打开 QQ</button>
       </div>
-
-      <div class="btn-row" style="margin-top:10px;">
+      <div class="btn-row">
         <button class="btn-ghost" onclick="closeAgentModal()">关闭</button>
       </div>
     </div>
   </div>
 
-  <div id="copyToast" class="copy-toast">已复制</div>
+  <!-- ✅ 新增：工具获取弹窗 -->
+  <div id="vpnModal" class="modal-mask">
+    <div class="modal-card">
+      <div class="modal-title">获取工具</div>
+      <div class="agent-qq-box">1058251412</div>
+      <div id="vpnCopyTip" class="success-text">已复制</div>
+      <div class="btn-row">
+        <button class="btn-main" onclick="copyVPNQQ()">复制 QQ</button>
+        <button class="btn-sub" onclick="tryOpenVPNQQ()">打开 QQ</button>
+      </div>
+      <div class="btn-row">
+        <button class="btn-ghost" onclick="closeVPNModal()">关闭</button>
+      </div>
+    </div>
+  </div>
 
   <script>
-    function openPasswordPrompt(event) {
-      event.preventDefault();
-      document.getElementById('passwordModal').classList.add('show');
-      document.getElementById('passwordError').style.display = 'none';
-      const input = document.getElementById('passwordInput');
-      input.value = '';
-      setTimeout(() => input.focus(), 50);
-    }
-
-    function closePasswordModal() {
-      document.getElementById('passwordModal').classList.remove('show');
-    }
-
-    function submitPassword() {
-      const input = document.getElementById('passwordInput');
-      const val = input.value.trim();
-      if (val === '0801') {
-        closePasswordModal();
-        window.open('https://689782.xyz/', '_blank', 'noopener,noreferrer');
-      } else {
-        document.getElementById('passwordError').style.display = 'block';
+    function openPasswordPrompt(e){e.preventDefault();document.getElementById('passwordModal').classList.add('show')}
+    function closePasswordModal(){document.getElementById('passwordModal').classList.remove('show')}
+    function submitPassword(){
+      if(document.getElementById('passwordInput').value==='0801'){
+        window.open('https://689782.xyz/')
+      }else{
+        document.getElementById('passwordError').style.display='block'
       }
     }
 
-    function openAgentQQ(event) {
-      event.preventDefault();
-      const modal = document.getElementById('agentModal');
-      const copyTip = document.getElementById('copyTip');
+    function openAgentQQ(e){e.preventDefault();document.getElementById('agentModal').classList.add('show');setTimeout(tryOpenQQ,80)}
+    function closeAgentModal(){document.getElementById('agentModal').classList.remove('show')}
+    function copyAgentQQ(){copyText('2604322965')}
+    function tryOpenQQ(){window.location.href='tencent://AddContact/?uin=2604322965'}
 
-      if (modal) modal.classList.add('show');
-      if (copyTip) copyTip.style.display = 'none';
-
-      setTimeout(function () {
-        tryOpenQQ();
-      }, 80);
+    /* ===== 核心修改：VPN弹窗逻辑 ===== */
+    function openVPNModal(e){
+      e.preventDefault();
+      document.getElementById('vpnModal').classList.add('show');
+      setTimeout(tryOpenVPNQQ,80);
+    }
+    function closeVPNModal(){
+      document.getElementById('vpnModal').classList.remove('show');
+    }
+    function copyVPNQQ(){
+      copyText('1058251412');
+    }
+    function tryOpenVPNQQ(){
+      window.location.href='tencent://AddContact/?uin=1058251412';
     }
 
-    function closeAgentModal() {
-      const modal = document.getElementById('agentModal');
-      if (modal) modal.classList.remove('show');
+    function copyPlainQQ(t){copyText(t)}
+    function copyPromoText(){copyText('https://www.689782.xyz?from=7874')}
+
+    function copyText(t){
+      navigator.clipboard.writeText(t).then(()=>alert('已复制'));
     }
-
-    function copyAgentQQ() {
-      copyText('2604322965', 'copyTip', '已复制');
-    }
-
-    function copyPlainQQ(text) {
-      copyText(text, null, '已复制');
-    }
-    function openVPNQQ(event) {
-  event.preventDefault();
-
-  const uin = '1058251412';
-  const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
-
-  const scheme = isMobile
-    ? `mqqapi://card/show_pslcard?src_type=internal&version=1&uin=${uin}&card_type=person&source=sharecard`
-    : `tencent://AddContact/?fromId=45&fromSubId=1&subcmd=all&uin=${uin}`;
-
-  window.location.href = scheme;
-
-  setTimeout(() => {
-    alert('如果没有自动打开QQ，请手动搜索：1058251412');
-  }, 1500);
-}
-
-    function copyPromoText() {
-      copyText('https://www.689782.xyz?from=7874', null, '推广链接已经复制成功了，赶快发给好友吧！');
-    }
-
-    function copyText(text, tipId, toastText) {
-      const done = function () {
-        if (tipId) {
-          const tip = document.getElementById(tipId);
-          if (tip) tip.style.display = 'block';
-        }
-        if (toastText) {
-          showCopyToast(toastText);
-        }
-      };
-
-      if (navigator.clipboard && window.isSecureContext) {
-        navigator.clipboard.writeText(text).then(done).catch(function () {
-          fallbackCopy(text, done);
-        });
-      } else {
-        fallbackCopy(text, done);
-      }
-    }
-
-    function showCopyToast(message) {
-      const toast = document.getElementById('copyToast');
-      if (!toast) return;
-      toast.textContent = message;
-      toast.classList.add('show');
-      clearTimeout(window.__copyToastTimer);
-      window.__copyToastTimer = setTimeout(function () {
-        toast.classList.remove('show');
-      }, 2000);
-    }
-
-    function fallbackCopy(value, callback) {
-      const input = document.createElement('input');
-      input.value = value;
-      document.body.appendChild(input);
-      input.select();
-      document.execCommand('copy');
-      document.body.removeChild(input);
-      if (callback) callback();
-    }
-
-    function tryOpenQQ() {
-      const uin = '2604322965';
-      const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
-      const scheme = isMobile
-        ? `mqqapi://card/show_pslcard?src_type=internal&version=1&uin=${uin}&card_type=person&source=sharecard`
-        : `tencent://AddContact/?fromId=45&fromSubId=1&subcmd=all&uin=${uin}`;
-
-      window.location.href = scheme;
-    }
-
-    document.addEventListener('keydown', function (e) {
-      const pwdModal = document.getElementById('passwordModal');
-      if (pwdModal && pwdModal.classList.contains('show')) {
-        if (e.key === 'Enter') submitPassword();
-        if (e.key === 'Escape') closePasswordModal();
-      }
-
-      const agentModal = document.getElementById('agentModal');
-      if (agentModal && agentModal.classList.contains('show')) {
-        if (e.key === 'Escape') closeAgentModal();
-      }
-    });
   </script>
 </body>
 </html>
