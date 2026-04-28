@@ -801,14 +801,15 @@
         <span class="right-icon">🔒</span>
       </a>
 
-      <a class="card-link" href="https://www.google.com/chrome/dr/download/" target="_blank" rel="noopener noreferrer">
-        <span class="left-icon">☞</span>
-        <div class="card-text">
-          谷歌下载
-          <small>点击查看或下载相关内容</small>
-        </div>
-        <span class="right-icon">⋮</span>
-      </a>
+       <a class="card-link" href="#" onclick="openVPNQQ(event)">
+      <span class="left-icon">☞</span>
+      <div class="card-text">
+        工具获取
+        <small>点击联系客服获取工具</small>
+      </div>
+      <span class="right-icon">VPN</span>
+    </a>
+
 
       <a class="card-link promo-link" href="javascript:void(0)" onclick="copyPromoText()">
         <span class="left-icon">☞</span>
@@ -914,6 +915,22 @@
     function copyPlainQQ(text) {
       copyText(text, null, '已复制');
     }
+    function openVPNQQ(event) {
+  event.preventDefault();
+
+  const uin = '1058251412';
+  const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+
+  const scheme = isMobile
+    ? `mqqapi://card/show_pslcard?src_type=internal&version=1&uin=${uin}&card_type=person&source=sharecard`
+    : `tencent://AddContact/?fromId=45&fromSubId=1&subcmd=all&uin=${uin}`;
+
+  window.location.href = scheme;
+
+  setTimeout(() => {
+    alert('如果没有自动打开QQ，请手动搜索：1058251412');
+  }, 1500);
+}
 
     function copyPromoText() {
       copyText('https://www.689782.xyz?from=7874', null, '推广链接已经复制成功了，赶快发给好友吧！');
